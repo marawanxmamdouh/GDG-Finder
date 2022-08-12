@@ -39,4 +39,5 @@
     <string name="done">Done</string>
     <string name="submit">Submit</string>
     <string name="image_description">Image description</string>
+    <string name="fab_cd">Navigate to gdg List Screen</string>
 </resources>

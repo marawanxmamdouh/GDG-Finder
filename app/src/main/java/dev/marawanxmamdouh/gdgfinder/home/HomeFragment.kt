@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import dev.marawanxmamdouh.gdgfinder.R
+import dev.marawanxmamdouh.gdgfinder.databinding.HomeFragmentBinding
 
 class HomeFragment : Fragment() {
 
@@ -15,14 +17,25 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: HomeFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.home_fragment, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        return view
+        binding = HomeFragmentBinding.inflate(inflater)
+
+        binding.viewModel = viewModel
+
+        viewModel.navigateToSearch.observe(viewLifecycleOwner) { shouldNavigate ->
+            if (shouldNavigate == true) {
+                findNavController().navigate(R.id.action_homeFragment_to_gdgListFragment)
+                viewModel.onNavigatedToSearch()
+            }
+        }
+
+        return binding.root
     }
 }

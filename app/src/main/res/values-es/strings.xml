@@ -31,4 +31,6 @@
     <string name="submitted">Enviado, no hay necesidad de enviar de nuevo.</string>
     <string name="done">Hecho</string>
     <string name="submit">Enviar</string>
+    <string name="image_description">descripción de la imagen</string>
+    <string name="fab_cd">Navegar a la pantalla de lista gdg</string>
 </resources>
